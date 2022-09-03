@@ -1,0 +1,17 @@
+.leftMenu {
+  list-style: none;
+  width: 200px;
+  text-transform: none;
+  position: sticky;
+  top: 80px;
+
+  li {
+    margin-bottom: 4px;
+
+    button {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}
