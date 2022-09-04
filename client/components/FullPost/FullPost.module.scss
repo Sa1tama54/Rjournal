@@ -1,0 +1,35 @@
+.container {
+  margin: 0 auto;
+  width: 680px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.actions {
+  width: 250px;
+  margin-bottom: 30px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+
+  b {
+    font-size: 18px;
+    margin: 0 10px;
+  }
+
+  span {
+    font-weight: 500;
+    color: #2ea83a;
+  }
+}

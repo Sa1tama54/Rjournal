@@ -3,13 +3,20 @@ import { Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Post.module.scss";
 import PostActions from "../PostActions";
+import Link from "next/link";
 
 const Post = () => {
   return (
     <Paper elevation={0} className="p-20 mb-40">
-      <Typography variant="h5" className={styles.title}>
-        Сообщество TJ снова собирает деньги на благотворительность к Новому
-      </Typography>
+      <Link href="/news/test">
+        <Typography
+          style={{ cursor: "pointer" }}
+          variant="h5"
+          className={styles.title}
+        >
+          Сообщество TJ снова собирает деньги на благотворительность к Новому
+        </Typography>
+      </Link>
       <Typography className={styles.text}>
         Наш сервис донатов обновился — комиссия ниже и разрешены иностранные
         карты. Так что пора его опробовать.
@@ -20,7 +27,7 @@ const Post = () => {
         height={400}
         alt=""
       />
-      <PostActions/>
+      <PostActions />
     </Paper>
   );
 };
