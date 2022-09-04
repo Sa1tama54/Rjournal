@@ -35,13 +35,14 @@ export const theme = createTheme({
             transform: "translateY(1px)",
           },
         },
-      },
-    },
 
-    MuiAvatar: {
-      styleOverrides: {
-        root: {
-          borderRadius: "10px",
+        containedPrimary: {
+          backgroundColor: "#4683d9",
+          color: "#fff",
+
+          "&:hover": {
+            backgroundColor: "#437CCE",
+          },
         },
       },
     },

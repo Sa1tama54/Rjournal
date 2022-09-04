@@ -1,0 +1,27 @@
+.root {
+  margin-left: 40px;
+  width: 320px;
+  position: sticky;
+  top: 80px;
+}
+
+.rotated {
+  width: 100px;
+  transform: rotate(-90deg) translateX(-50px);
+  transform-origin: right;
+
+  svg {
+    transform: rotate(-90deg);
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  svg {
+    margin-left: 5px;
+  }
+}

@@ -21,7 +21,7 @@ const LeftMenu = () => {
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/messages">
           <Button>
             <SmsOutlinedIcon className="mr-10" />
             Сообщения
@@ -29,7 +29,7 @@ const LeftMenu = () => {
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/rating">
           <Button>
             <TrendingUpOutlinedIcon className="mr-10" />
             Рейтинг RJ
@@ -37,7 +37,7 @@ const LeftMenu = () => {
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/subscriptions">
           <Button>
             <FormatListBulletedOutlinedIcon className="mr-10" />
             Подписки

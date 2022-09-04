@@ -9,6 +9,7 @@ import {
 } from "@mui/icons-material";
 import { Avatar, Button, IconButton, Paper } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
           <SearchIcon />
           <input placeholder="Поиск" type="text" />
         </div>
-        <Button variant="contained">
+        <Button variant="contained" color="inherit">
           <span>Новая запись</span>
         </Button>
       </div>
@@ -33,7 +34,13 @@ const Header = () => {
         <IconButton>
           <NotificationsNoneIcon />
         </IconButton>
-        <Avatar className="ml-20 mr-5" src="/broken-image.jpg" />
+        <Link href="/profile/1">
+          <Avatar
+            variant="rounded"
+            className="ml-20 mr-5"
+            src="/broken-image.jpg"
+          />
+        </Link>
         <IconButton>
           <KeyboardArrowDownOutlinedIcon />
         </IconButton>

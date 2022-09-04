@@ -2,10 +2,11 @@ import React from "react";
 import { Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Post.module.scss";
+import PostActions from "../PostActions";
 
 const Post = () => {
   return (
-    <Paper elevation={0} className="p-20">
+    <Paper elevation={0} className="p-20 mb-40">
       <Typography variant="h5" className={styles.title}>
         Сообщество TJ снова собирает деньги на благотворительность к Новому
       </Typography>
@@ -19,6 +20,7 @@ const Post = () => {
         height={400}
         alt=""
       />
+      <PostActions/>
     </Paper>
   );
 };
