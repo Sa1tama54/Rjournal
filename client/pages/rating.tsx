@@ -4,17 +4,17 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   Tabs,
   Typography,
 } from "@mui/material";
+import { NextPage } from "next";
 import React from "react";
 import FollowBtn from "../components/FollowBtn";
 import MainLayout from "../layouts/MainLayout";
 
-const Rating = () => {
+const Rating: NextPage = () => {
   return (
     <MainLayout hideComments>
       <Paper elevation={0} className="p-20">

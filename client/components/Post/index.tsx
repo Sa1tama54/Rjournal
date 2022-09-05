@@ -9,13 +9,15 @@ const Post = () => {
   return (
     <Paper elevation={0} className="p-20 mb-40">
       <Link href="/news/test">
-        <Typography
-          style={{ cursor: "pointer" }}
-          variant="h5"
-          className={styles.title}
-        >
-          Сообщество TJ снова собирает деньги на благотворительность к Новому
-        </Typography>
+        <a>
+          <Typography
+            style={{ cursor: "pointer" }}
+            variant="h5"
+            className={styles.title}
+          >
+            Сообщество TJ снова собирает деньги на благотворительность к Новому
+          </Typography>
+        </a>
       </Link>
       <Typography className={styles.text}>
         Наш сервис донатов обновился — комиссия ниже и разрешены иностранные

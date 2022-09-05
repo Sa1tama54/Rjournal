@@ -14,34 +14,42 @@ const LeftMenu = () => {
     <ul className={styles.leftMenu}>
       <li>
         <Link href="/">
-          <Button>
-            <WhatshotOutlinedIcon className="mr-10" />
-            Лента
-          </Button>
+          <a>
+            <Button>
+              <WhatshotOutlinedIcon className="mr-10" />
+              Лента
+            </Button>
+          </a>
         </Link>
       </li>
       <li>
         <Link href="/messages">
-          <Button>
-            <SmsOutlinedIcon className="mr-10" />
-            Сообщения
-          </Button>
+          <a>
+            <Button>
+              <SmsOutlinedIcon className="mr-10" />
+              Сообщения
+            </Button>
+          </a>
         </Link>
       </li>
       <li>
         <Link href="/rating">
-          <Button>
-            <TrendingUpOutlinedIcon className="mr-10" />
-            Рейтинг RJ
-          </Button>
+          <a>
+            <Button>
+              <TrendingUpOutlinedIcon className="mr-10" />
+              Рейтинг RJ
+            </Button>
+          </a>
         </Link>
       </li>
       <li>
         <Link href="/subscriptions">
-          <Button>
-            <FormatListBulletedOutlinedIcon className="mr-10" />
-            Подписки
-          </Button>
+          <a>
+            <Button>
+              <FormatListBulletedOutlinedIcon className="mr-10" />
+              Подписки
+            </Button>
+          </a>
         </Link>
       </li>
     </ul>

@@ -38,6 +38,11 @@ body {
   display: flex;
   padding: 0 30px;
   padding-top: 80px;
+
+  &--background--white {
+    background-color: #fff;
+    min-height: 100vh;
+  }
 }
 
 .content {

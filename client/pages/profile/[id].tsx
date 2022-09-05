@@ -24,15 +24,17 @@ const Profile = () => {
             </Typography>
           </div>
           <div>
-            <Link href='/profile/settings'>
-              <Button
-                sx={{ minWidth: 45, width: 45, height: 40 }}
-                variant="contained"
-                color="primary"
-                className="mr-10"
-              >
-                <SettingsIcon />
-              </Button>
+            <Link href="/profile/settings">
+              <a>
+                <Button
+                  sx={{ minWidth: 45, width: 45, height: 40 }}
+                  variant="contained"
+                  color="primary"
+                  className="mr-10"
+                >
+                  <SettingsIcon />
+                </Button>
+              </a>
             </Link>
             <Button className="fw-bold" variant="contained" color="primary">
               <SmsOutlinedIcon className="mr-10" />

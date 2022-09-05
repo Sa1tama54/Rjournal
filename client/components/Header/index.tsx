@@ -18,14 +18,27 @@ const Header = () => {
         <IconButton className="mr-10">
           <MenuIcon />
         </IconButton>
-        <Image height={50} width={32} src="/static/img/logo.svg" alt="logo" />
+        <Link href="/">
+          <a>
+            <Image
+              height={50}
+              width={32}
+              src="/static/img/logo.svg"
+              alt="logo"
+            />
+          </a>
+        </Link>
         <div className={styles.searchBlock}>
           <SearchIcon />
           <input placeholder="Поиск" type="text" />
         </div>
-        <Button variant="contained" color="inherit">
-          <span>Новая запись</span>
-        </Button>
+        <Link href="/write">
+          <a>
+            <Button variant="contained" color="inherit">
+              <span>Новая запись</span>
+            </Button>
+          </a>
+        </Link>
       </div>
       <div className="d-flex align-center">
         <IconButton>
@@ -35,11 +48,13 @@ const Header = () => {
           <NotificationsNoneIcon />
         </IconButton>
         <Link href="/profile/1">
-          <Avatar
-            variant="rounded"
-            className="ml-20 mr-5"
-            src="/broken-image.jpg"
-          />
+          <a>
+            <Avatar
+              variant="rounded"
+              className="ml-20 mr-5"
+              src="/broken-image.jpg"
+            />
+          </a>
         </Link>
         <IconButton>
           <KeyboardArrowDownOutlinedIcon />
