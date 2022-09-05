@@ -10,7 +10,16 @@ import React, { MouseEventHandler } from "react";
 import styles from "./CommentPost.module.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const CommentPost = () => {
+interface CommentPostProps {
+  user: {
+    fullName: string;
+    avatarUrl: string;
+  };
+  text: string;
+  createdAt: string;
+}
+
+const CommentPost: React.FC<CommentPostProps> = ({ user, text, createdAt }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event: { currentTarget: any }) => {
@@ -24,13 +33,11 @@ const CommentPost = () => {
   return (
     <div className="mb-20">
       <div className="d-flex align-center mb-10">
-        <Avatar sx={{ width: 30, height: 30 }} />
-        <b className="ml-10">Вася Пупкин</b>
+        <Avatar src={user.avatarUrl} sx={{ width: 30, height: 30 }} />
+        <b className="ml-10">{user.fullName}</b>
+        <span className={styles.data}>{createdAt}</span>
       </div>
-      <Typography>
-        Теперь, каждое рабочее утро, после кровати, я перекладываюсь туда спать
-        ещё на часок. Ну и…
-      </Typography>
+      <Typography>{text}</Typography>
       <div>
         <span className={styles.replyBtn}>Ответить</span>
         <IconButton onClick={handleClick}>
