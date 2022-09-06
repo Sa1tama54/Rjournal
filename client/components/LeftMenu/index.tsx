@@ -8,50 +8,51 @@ import {
 } from "@mui/icons-material";
 import styles from "./LeftMenu.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+const menu = [
+  {
+    text: "Лента",
+    icon: <WhatshotOutlinedIcon className="mr-10" />,
+    path: "/",
+  },
+  {
+    text: "Сообщения",
+    icon: <SmsOutlinedIcon className="mr-10" />,
+    path: "/messages",
+  },
+  {
+    text: "Рейтинг",
+    icon: <TrendingUpOutlinedIcon className="mr-10" />,
+    path: "/rating",
+  },
+  {
+    text: "Подписки",
+    icon: <FormatListBulletedOutlinedIcon className="mr-10" />,
+    path: "/subscriptions",
+  },
+];
 
 const LeftMenu = () => {
+  const router = useRouter();
+
   return (
     <ul className={styles.leftMenu}>
-      <li>
-        <Link href="/">
-          <a>
-            <Button>
-              <WhatshotOutlinedIcon className="mr-10" />
-              Лента
-            </Button>
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/messages">
-          <a>
-            <Button>
-              <SmsOutlinedIcon className="mr-10" />
-              Сообщения
-            </Button>
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/rating">
-          <a>
-            <Button>
-              <TrendingUpOutlinedIcon className="mr-10" />
-              Рейтинг RJ
-            </Button>
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/subscriptions">
-          <a>
-            <Button>
-              <FormatListBulletedOutlinedIcon className="mr-10" />
-              Подписки
-            </Button>
-          </a>
-        </Link>
-      </li>
+      {menu.map((obj) => (
+        <li key={obj.path}>
+          <Link href={obj.path}>
+            <a>
+              <Button
+                variant={router.asPath === obj.path ? "contained" : "text"}
+                color="secondary"
+              >
+                {obj.icon}
+                {obj.text}
+              </Button>
+            </a>
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };

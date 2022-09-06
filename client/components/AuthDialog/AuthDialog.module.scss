@@ -1,0 +1,39 @@
+.content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.mainButtons {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    position: relative;
+    margin-bottom: 15px;
+
+    svg {
+      position: absolute;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.miniButtons {
+  display: flex;
+
+  button {
+    margin-right: 20px;
+    height: 40px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -10,8 +10,19 @@ import {
 import { Avatar, Button, IconButton, Paper } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import AuthDialog from "../AuthDialog";
 
 const Header = () => {
+  const [authVisible, setAuthVisible] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setAuthVisible(true);
+  };
+
+  const handleClose = () => {
+    setAuthVisible(false);
+  };
+
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className="d-flex align-center justify-between">
@@ -44,7 +55,7 @@ const Header = () => {
         <IconButton>
           <SmsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleClickOpen}>
           <NotificationsNoneIcon />
         </IconButton>
         <Link href="/profile/1">
@@ -60,6 +71,7 @@ const Header = () => {
           <KeyboardArrowDownOutlinedIcon />
         </IconButton>
       </div>
+      {authVisible && <AuthDialog handleClose={handleClose} />}
     </Paper>
   );
 };
