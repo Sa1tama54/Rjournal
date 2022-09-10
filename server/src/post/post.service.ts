@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { SearchPostDto } from './dto/search-post.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -17,14 +18,78 @@ export class PostService {
   }
 
   findAll() {
-    return this.repository.find();
+    return this.repository.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 
-  findOne(id: number) {
+  async popular() {
+    const qb = this.repository.createQueryBuilder('');
+
+    qb.orderBy('views', 'DESC').limit(10);
+
+    const [items, total] = await qb.getManyAndCount();
+
+    return {
+      items,
+      total,
+    };
+  }
+
+  async search(dto: SearchPostDto) {
+    const qb = this.repository.createQueryBuilder('p');
+
+    if (dto.views) {
+      qb.orderBy('views', dto.views);
+    }
+
+    if (dto.title) {
+      qb.andWhere(`p.title ILIKE :title`);
+    }
+
+    if (dto.body) {
+      qb.andWhere(`p.body ILIKE :body`);
+    }
+
+    if (dto.tags) {
+      qb.andWhere(`p.body ILIKE :tags`);
+    }
+
+    qb.setParameters({
+      title: `%${dto.title}%`,
+      body: `%${dto.body}%`,
+      tags: `%${dto.tags}%`,
+      views: dto.views || '',
+    });
+
+    const [items, total] = await qb.getManyAndCount();
+
+    return {
+      items,
+      total,
+    };
+  }
+
+  async findOne(id: number) {
+    await this.repository
+      .createQueryBuilder('posts')
+      .whereInIds(id)
+      .update()
+      .set({ views: () => 'views + 1' })
+      .execute();
+
     return this.repository.findOne({ where: { id } });
   }
 
   update(id: number, dto: UpdatePostDto) {
+    const find = this.repository.findOne({ where: { id } });
+
+    if (!find) {
+      throw new NotFoundException('Статья не найдена');
+    }
+
     return this.repository.update(id, dto);
   }
 

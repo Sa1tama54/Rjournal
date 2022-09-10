@@ -1,3 +1,4 @@
+import { SearchPostDto } from './dto/search-post.dto';
 import {
   Controller,
   Get,
@@ -7,6 +8,7 @@ import {
   Param,
   Delete,
   NotFoundException,
+  Query,
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -26,25 +28,23 @@ export class PostController {
     return this.postService.findAll();
   }
 
+  @Get('/popular')
+  getByPopular() {
+    return this.postService.popular();
+  }
+
+  @Get('/search')
+  getBySearch(@Query() dto: SearchPostDto) {
+    return this.postService.search(dto);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    const find = this.postService.findOne(+id);
-
-    if (!find) {
-      throw new NotFoundException('Статья не найдена');
-    }
-
     return this.postService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
-    const find = this.postService.findOne(+id);
-
-    if (!find) {
-      throw new NotFoundException('Статья не найдена');
-    }
-
     return this.postService.update(+id, updatePostDto);
   }
 
