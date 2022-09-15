@@ -1,29 +1,56 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, TextField } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { CreateUserDto } from "../../../utils/api/types";
 import { RegisterShema, ValidateShemaTypes } from "../../../utils/validate";
 import FormField from "../../FormField";
+import { setCookie } from "nookies";
+import { UserApi } from "../../../utils/api";
 
 interface RegisterTypeProps {
   onOpenLogin: () => void;
 }
 
 const RegisterType: React.FC<RegisterTypeProps> = ({ onOpenLogin }) => {
+  const [errorMessage, setErrorMessage] = React.useState("");
+
   const form = useForm<ValidateShemaTypes>({
     mode: "onChange",
     resolver: yupResolver(RegisterShema),
   });
-  const onSubmit = (data: ValidateShemaTypes) => console.log(data);
+
+  const onSubmit = async (dto: CreateUserDto) => {
+    try {
+      const data = await UserApi.register(dto);
+
+      setCookie(null, "rj_token", data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+
+      setErrorMessage("");
+    } catch (error: any) {
+      console.log(error);
+      if (error.response) {
+        setErrorMessage(error.response.data.detail);
+      }
+    }
+  };
 
   return (
     <FormProvider {...form}>
-      <FormField name="fullname" label="Имя и фамилия" />
+      <FormField name="fullName" label="Имя и фамилия" />
       <FormField name="email" label="Почта" />
       <FormField name="password" label="Пароль" />
+      {errorMessage && (
+        <Alert className="mb-20" severity="error">
+          {errorMessage}
+        </Alert>
+      )}
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Button
-          disabled={!form.formState.isValid}
+          disabled={!form.formState.isValid || form.formState.isSubmitting}
           type="submit"
           variant="contained"
           color="primary"
