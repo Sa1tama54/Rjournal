@@ -1,5 +1,6 @@
+import { CreateUserDto } from './../user/dto/create-user.dto';
 import { UserEntity } from './../user/entities/user.entity';
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 
@@ -23,13 +24,33 @@ export class AuthService {
     return null;
   }
 
+  generateJwt(data: { id: number; email: string }) {
+    const payload = { email: data.email, sub: data.id };
+
+    return this.jwtService.sign(payload);
+  }
+
   async login(user: UserEntity) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...userData } = user;
 
-    const payload = { email: user.email, sub: user.id };
     return {
       ...userData,
-      access_token: this.jwtService.sign(payload),
+      token: this.generateJwt(userData),
     };
+  }
+
+  async register(dto: CreateUserDto) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...userData } = await this.usersService.create(dto);
+
+      return {
+        ...userData,
+        token: this.generateJwt(userData),
+      };
+    } catch (error) {
+      throw new ForbiddenException(error);
+    }
   }
 }

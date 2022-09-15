@@ -3,4 +3,6 @@ export class SearchPostDto {
   body?: string;
   views?: 'DESC' | 'ASC';
   tags?: string;
+  limit?: number;
+  take?: number;
 }

@@ -41,6 +41,9 @@ export class PostService {
   async search(dto: SearchPostDto) {
     const qb = this.repository.createQueryBuilder('p');
 
+    qb.limit(dto.limit || 0);
+    qb.take(dto.take || 10);
+
     if (dto.views) {
       qb.orderBy('views', dto.views);
     }

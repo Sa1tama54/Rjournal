@@ -7,7 +7,6 @@ import {
   Patch,
   Param,
   Delete,
-  NotFoundException,
   Query,
 } from '@nestjs/common';
 import { PostService } from './post.service';
@@ -28,12 +27,12 @@ export class PostController {
     return this.postService.findAll();
   }
 
-  @Get('/popular')
+  @Get('popular')
   getByPopular() {
     return this.postService.popular();
   }
 
-  @Get('/search')
+  @Get('search')
   getBySearch(@Query() dto: SearchPostDto) {
     return this.postService.search(dto);
   }
