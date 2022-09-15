@@ -43,7 +43,11 @@ export class AuthService {
   async register(dto: CreateUserDto) {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...userData } = await this.usersService.create(dto);
+      const { password, ...userData } = await this.usersService.create({
+        fullName: dto.fullName,
+        email: dto.email,
+        password: dto.password,
+      });
 
       return {
         ...userData,
