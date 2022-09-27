@@ -8,28 +8,22 @@ import {
   TableRow,
   Tabs,
   Typography,
-} from "@mui/material";
-import { NextPage } from "next";
-import React from "react";
-import FollowBtn from "../components/FollowBtn";
-import MainLayout from "../layouts/MainLayout";
+} from '@mui/material';
+import { NextPage } from 'next';
+import React from 'react';
+import FollowBtn from '../components/FollowBtn';
+import MainLayout from '../layouts/MainLayout';
 
 const Rating: NextPage = () => {
   return (
     <MainLayout hideComments>
       <Paper elevation={0} className="p-20">
-        <Typography
-          marginBottom="6px"
-          fontSize="30px"
-          className="fw-bold"
-          variant="h5"
-        >
+        <Typography marginBottom="6px" fontSize="30px" className="fw-bold" variant="h5">
           Рейтинг сообществ и блогов
         </Typography>
         <Typography fontSize="15px">
-          Десять лучших авторов и комментаторов, а также администраторы первых
-          десяти сообществ из рейтинга по итогам месяца бесплатно получают
-          Plus-аккаунт на месяц.
+          Десять лучших авторов и комментаторов, а также администраторы первых десяти сообществ из
+          рейтинга по итогам месяца бесплатно получают Plus-аккаунт на месяц.
         </Typography>
         <Tabs className="mt-20" aria-label="basic tabs example" value={0}>
           <Tab label="ЯНВАРЬ" />
@@ -48,9 +42,7 @@ const Rating: NextPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
+            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
                 <span className="mr-15">1</span>
                 Вася Пупкин

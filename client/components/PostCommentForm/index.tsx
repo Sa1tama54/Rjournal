@@ -1,14 +1,14 @@
-import { Button, Input } from "@mui/material";
-import React from "react";
-import styles from "./PostCommentForm.module.scss";
+import { Button, Input } from '@mui/material';
+import React from 'react';
+import styles from './PostCommentForm.module.scss';
 
 const PostCommentForm = () => {
   const [clicked, setClicked] = React.useState(false);
-  const [text, setText] = React.useState("");
+  const [text, setText] = React.useState('');
 
   const handleAdd = () => {
     setClicked(false);
-    setText("");
+    setText('');
   };
 
   return (

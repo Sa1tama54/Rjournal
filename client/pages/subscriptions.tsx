@@ -1,6 +1,6 @@
-import React from "react";
-import MainLayout from "../layouts/MainLayout";
-import SearchIcon from "@mui/icons-material/Search";
+import React from 'react';
+import MainLayout from '../layouts/MainLayout';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Subscriptions = () => {
   return (

@@ -1,9 +1,9 @@
-import React from "react";
-import CommentItem from "./CommentItem";
-import styles from "./SideComments.module.scss";
-import { KeyboardArrowRight as KeyboardArrowRightIcon } from "@mui/icons-material";
-import clsx from "clsx";
-import data from "../../data";
+import React from 'react';
+import CommentItem from './CommentItem';
+import styles from './SideComments.module.scss';
+import { KeyboardArrowRight as KeyboardArrowRightIcon } from '@mui/icons-material';
+import clsx from 'clsx';
+import data from '../../data';
 
 const SideComments = () => {
   const [visible, setVisible] = React.useState(false);
@@ -15,9 +15,7 @@ const SideComments = () => {
         <KeyboardArrowRightIcon />
       </h3>
       {visible &&
-        data.comments.popular.map((comment) => (
-          <CommentItem key={comment.id} {...comment} />
-        ))}
+        data.comments.popular.map((comment) => <CommentItem key={comment.id} {...comment} />)}
     </div>
   );
 };

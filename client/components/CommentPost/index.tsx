@@ -1,14 +1,7 @@
-import {
-  Avatar,
-  Divider,
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
-import React, { MouseEventHandler } from "react";
-import styles from "./CommentPost.module.scss";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Avatar, Divider, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import React, { MouseEventHandler } from 'react';
+import styles from './CommentPost.module.scss';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 interface CommentPostProps {
   user: {
@@ -43,12 +36,7 @@ const CommentPost: React.FC<CommentPostProps> = ({ user, text, createdAt }) => {
         <IconButton onClick={handleClick}>
           <MoreVertIcon />
         </IconButton>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
+        <Menu id="basic-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
           <MenuItem onClick={handleClose}>Удалить</MenuItem>
           <MenuItem onClick={handleClose}>Редактировать</MenuItem>
         </Menu>

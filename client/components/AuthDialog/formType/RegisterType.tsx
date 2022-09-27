@@ -1,22 +1,22 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Alert, Button } from "@mui/material";
-import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { CreateUserDto } from "../../../utils/api/types";
-import { RegisterShema, ValidateShemaTypes } from "../../../utils/validate";
-import FormField from "../../FormField";
-import { setCookie } from "nookies";
-import { UserApi } from "../../../utils/api";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Alert, Button } from '@mui/material';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { CreateUserDto } from '../../../utils/api/types';
+import { RegisterShema, ValidateShemaTypes } from '../../../utils/validate';
+import FormField from '../../FormField';
+import { setCookie } from 'nookies';
+import { UserApi } from '../../../utils/api';
 
 interface RegisterTypeProps {
   onOpenLogin: () => void;
 }
 
 const RegisterType: React.FC<RegisterTypeProps> = ({ onOpenLogin }) => {
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const form = useForm<ValidateShemaTypes>({
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(RegisterShema),
   });
 
@@ -24,18 +24,24 @@ const RegisterType: React.FC<RegisterTypeProps> = ({ onOpenLogin }) => {
     try {
       const data = await UserApi.register(dto);
 
-      setCookie(null, "rj_token", data.token, {
+      setCookie(null, 'rj_token', data.token, {
         maxAge: 30 * 24 * 60 * 60,
-        path: "/",
+        path: '/',
       });
 
-      setErrorMessage("");
+      setErrorMessage('');
     } catch (error: any) {
-      console.log(error);
       if (error.response) {
         setErrorMessage(error.response.data.detail);
       }
     }
+  };
+
+  const loginBtnStyle = {
+    '&:hover': {
+      color: '#4683d9',
+    },
+    fontSize: 14,
   };
 
   return (
@@ -58,19 +64,10 @@ const RegisterType: React.FC<RegisterTypeProps> = ({ onOpenLogin }) => {
         >
           Зарегистрироваться
         </Button>
-        <Button
-          sx={{
-            "&:hover": {
-              color: "#4683d9",
-            },
-            fontSize: 14,
-          }}
-          fullWidth
-          onClick={onOpenLogin}
-        >
-          Войти
-        </Button>
       </form>
+      <Button sx={loginBtnStyle} fullWidth onClick={onOpenLogin}>
+        Войти
+      </Button>
     </FormProvider>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
-import EditorJS from "@editorjs/editorjs";
+import React from 'react';
+import EditorJS from '@editorjs/editorjs';
 
 const Editor = () => {
   const [editor, setEditor] = React.useState<EditorJS | null>(null);
@@ -8,8 +8,8 @@ const Editor = () => {
     setEditor((prevEditor) => {
       if (!prevEditor) {
         return new EditorJS({
-          holder: "editor",
-          placeholder: "Введите текст вашей статьи",
+          holder: 'editor',
+          placeholder: 'Введите текст вашей статьи',
         });
       }
       return null;

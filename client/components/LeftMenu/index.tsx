@@ -1,35 +1,35 @@
-import { Button } from "@mui/material";
-import React from "react";
+import { Button } from '@mui/material';
+import React from 'react';
 import {
   WhatshotOutlined as WhatshotOutlinedIcon,
   SmsOutlined as SmsOutlinedIcon,
   TrendingUpOutlined as TrendingUpOutlinedIcon,
   FormatListBulletedOutlined as FormatListBulletedOutlinedIcon,
-} from "@mui/icons-material";
-import styles from "./LeftMenu.module.scss";
-import Link from "next/link";
-import { useRouter } from "next/router";
+} from '@mui/icons-material';
+import styles from './LeftMenu.module.scss';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const menu = [
   {
-    text: "Лента",
+    text: 'Лента',
     icon: <WhatshotOutlinedIcon className="mr-10" />,
-    path: "/",
+    path: '/',
   },
   {
-    text: "Сообщения",
+    text: 'Сообщения',
     icon: <SmsOutlinedIcon className="mr-10" />,
-    path: "/messages",
+    path: '/messages',
   },
   {
-    text: "Рейтинг",
+    text: 'Рейтинг',
     icon: <TrendingUpOutlinedIcon className="mr-10" />,
-    path: "/rating",
+    path: '/rating',
   },
   {
-    text: "Подписки",
+    text: 'Подписки',
     icon: <FormatListBulletedOutlinedIcon className="mr-10" />,
-    path: "/subscriptions",
+    path: '/subscriptions',
   },
 ];
 
@@ -42,10 +42,7 @@ const LeftMenu = () => {
         <li key={obj.path}>
           <Link href={obj.path}>
             <a>
-              <Button
-                variant={router.asPath === obj.path ? "contained" : "text"}
-                color="secondary"
-              >
+              <Button variant={router.asPath === obj.path ? 'contained' : 'text'} color="secondary">
                 {obj.icon}
                 {obj.text}
               </Button>

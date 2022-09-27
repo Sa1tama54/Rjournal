@@ -1,22 +1,26 @@
-import { Alert, Button } from "@mui/material";
-import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginSchema, ValidateShemaTypes } from "../../../utils/validate";
-import FormField from "../../FormField";
-import { CreateUserDto } from "../../../utils/api/types";
-import { UserApi } from "../../../utils/api";
-import { setCookie } from "nookies";
+import { Alert, Button } from '@mui/material';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { LoginSchema, ValidateShemaTypes } from '../../../utils/validate';
+import FormField from '../../FormField';
+import { CreateUserDto } from '../../../utils/api/types';
+import { UserApi } from '../../../utils/api';
+import { setCookie } from 'nookies';
+import { useAppDispatch } from '../../../app/hooks';
+import { setUserData } from '../../../features/user/slice';
 
 interface LoginTypeProps {
   onOpenRegister: () => void;
 }
 
 const LoginType: React.FC<LoginTypeProps> = ({ onOpenRegister }) => {
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const dispatch = useAppDispatch();
+
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const form = useForm<ValidateShemaTypes>({
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(LoginSchema),
   });
 
@@ -24,12 +28,14 @@ const LoginType: React.FC<LoginTypeProps> = ({ onOpenRegister }) => {
     try {
       const data = await UserApi.login(dto);
 
-      setCookie(null, "rj_token", data.token, {
+      setCookie(null, 'rj_token', data.token, {
         maxAge: 30 * 24 * 60 * 60,
-        path: "/",
+        path: '/',
       });
 
-      setErrorMessage("");
+      setErrorMessage('');
+
+      dispatch(setUserData(data));
     } catch (error: any) {
       if (error.response) {
         setErrorMessage(error.response.data.message);
@@ -56,19 +62,19 @@ const LoginType: React.FC<LoginTypeProps> = ({ onOpenRegister }) => {
         >
           Войти
         </Button>
-        <Button
-          sx={{
-            "&:hover": {
-              color: "#4683d9",
-            },
-            fontSize: 14,
-          }}
-          onClick={onOpenRegister}
-          fullWidth
-        >
-          Регистрация
-        </Button>
       </form>
+      <Button
+        sx={{
+          '&:hover': {
+            color: '#4683d9',
+          },
+          fontSize: 14,
+        }}
+        onClick={onOpenRegister}
+        fullWidth
+      >
+        Регистрация
+      </Button>
     </FormProvider>
   );
 };

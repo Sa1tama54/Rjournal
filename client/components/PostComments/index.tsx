@@ -1,13 +1,13 @@
-import { Paper, Tab, Tabs, Typography } from "@mui/material";
-import React from "react";
-import data from "../../data";
-import CommentPost from "../CommentPost";
-import PostCommentForm from "../PostCommentForm";
-import styles from "./PostComments.module.scss";
+import { Paper, Tab, Tabs, Typography } from '@mui/material';
+import React from 'react';
+import data from '../../data';
+import CommentPost from '../CommentPost';
+import PostCommentForm from '../PostCommentForm';
+import styles from './PostComments.module.scss';
 
 const PostComments = () => {
   const [activeTab, setActiveTab] = React.useState(0);
-  const comments = data.comments[activeTab === 0 ? "popular" : "new"];
+  const comments = data.comments[activeTab === 0 ? 'popular' : 'new'];
 
   return (
     <Paper className="p-20" elevation={0}>

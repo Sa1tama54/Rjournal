@@ -1,7 +1,7 @@
-import React from "react";
-import FullPost from "../../components/FullPost";
-import PostComments from "../../components/PostComments";
-import MainLayout from "../../layouts/MainLayout";
+import React from 'react';
+import FullPost from '../../components/FullPost';
+import PostComments from '../../components/PostComments';
+import MainLayout from '../../layouts/MainLayout';
 
 const Post = () => {
   return (

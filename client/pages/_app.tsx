@@ -1,11 +1,18 @@
-import "../styles/globals.scss";
-import type { AppProps } from "next/app";
-import "macro-css";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { theme } from "../theme";
-import Head from "next/head";
+import '../styles/globals.scss';
+import type { AppInitialProps, AppProps } from 'next/app';
+import 'macro-css';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from '../theme';
+import Head from 'next/head';
+import { Provider } from 'react-redux';
+import { wrapper } from '../app/store';
+import { setUserData } from '../features/user/slice';
+import { UserApi } from '../utils/api';
+import { parseCookies } from 'nookies';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <>
       <Head>
@@ -15,10 +22,28 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...props.pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   );
 }
+
+MyApp.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Component }) => {
+  try {
+    const { rj_token } = parseCookies(ctx);
+
+    const userData = await UserApi.getProfileData(rj_token);
+
+    store.dispatch(setUserData(userData));
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    pageProps: Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store }) : {},
+  };
+});
 
 export default MyApp;

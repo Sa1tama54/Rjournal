@@ -1,9 +1,9 @@
-import { Button, Input } from "@mui/material";
-import dynamic from "next/dynamic";
-import React from "react";
-import styles from "./WriteForm.module.scss";
+import { Button, Input } from '@mui/material';
+import dynamic from 'next/dynamic';
+import React from 'react';
+import styles from './WriteForm.module.scss';
 
-const Editor = dynamic(() => import("../Editor"), {
+const Editor = dynamic(() => import('../Editor'), {
   ssr: false,
 });
 
@@ -14,11 +14,7 @@ interface WriteFormProps {
 const WriteForm: React.FC<WriteFormProps> = ({ title }) => {
   return (
     <>
-      <Input
-        classes={{ root: styles.textField }}
-        placeholder="Заголовок"
-        defaultValue={title}
-      />
+      <Input classes={{ root: styles.textField }} placeholder="Заголовок" defaultValue={title} />
       <div className={styles.editor}>
         <Editor />
       </div>

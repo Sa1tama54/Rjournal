@@ -1,7 +1,7 @@
-import React from "react";
-import { Avatar, Divider, Typography } from "@mui/material";
-import styles from "./SideComments.module.scss";
-import Link from "next/link";
+import React from 'react';
+import { Avatar, Divider, Typography } from '@mui/material';
+import styles from './SideComments.module.scss';
+import Link from 'next/link';
 
 interface CommentItemProps {
   user: {
@@ -18,11 +18,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ user, text, post }) => {
   return (
     <div className="mb-25">
       <div className="d-flex">
-        <Avatar
-          src={user.avatarUrl}
-          className="mr-10"
-          sx={{ width: 24, height: 24 }}
-        />
+        <Avatar src={user.avatarUrl} className="mr-10" sx={{ width: 24, height: 24 }} />
         <b>{user.fullName}</b>
       </div>
       <Typography className="mb-5 mt-5">{text}</Typography>

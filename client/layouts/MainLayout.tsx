@@ -1,8 +1,8 @@
-import React from "react";
-import clsx from "clsx";
-import LeftMenu from "../components/LeftMenu";
-import Header from "../components/Header";
-import SideComments from "../components/SideComments";
+import React from 'react';
+import clsx from 'clsx';
+import LeftMenu from '../components/LeftMenu';
+import Header from '../components/Header';
+import SideComments from '../components/SideComments';
 
 interface MainLayoutProps {
   hideComments?: boolean;
@@ -22,15 +22,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   return (
     <>
       <Header />
-      <div className={clsx("main", className)}>
+      <div className={clsx('main', className)}>
         {!hideMenu && (
           <div className="leftSide">
             <LeftMenu />
           </div>
         )}
-        <div className={clsx("content", { "content--full": contentFullWidth })}>
-          {children}
-        </div>
+        <div className={clsx('content', { 'content--full': contentFullWidth })}>{children}</div>
         {!hideComments && (
           <div className="rightSide">
             <SideComments />

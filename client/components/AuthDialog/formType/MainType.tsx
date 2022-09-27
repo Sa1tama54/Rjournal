@@ -1,6 +1,6 @@
-import { Button } from "@mui/material";
-import React from "react";
-import styles from "../AuthDialog.module.scss";
+import { Button } from '@mui/material';
+import React from 'react';
+import styles from '../AuthDialog.module.scss';
 
 interface MainTypeProps {
   onOpenLogin: () => void;
@@ -46,12 +46,7 @@ const MainType: React.FC<MainTypeProps> = ({ onOpenLogin }) => {
           </svg>
           Google
         </Button>
-        <Button
-          onClick={onOpenLogin}
-          color="inherit"
-          variant="contained"
-          fullWidth
-        >
+        <Button onClick={onOpenLogin} color="inherit" variant="contained" fullWidth>
           <svg viewBox="0 0 24 24" id="v_email">
             <path
               fillRule="evenodd"

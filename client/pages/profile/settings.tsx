@@ -1,6 +1,6 @@
-import { Button, Divider, Paper, TextField, Typography } from "@mui/material";
-import React from "react";
-import MainLayout from "../../layouts/MainLayout";
+import { Button, Divider, Paper, TextField, Typography } from '@mui/material';
+import React from 'react';
+import MainLayout from '../../layouts/MainLayout';
 
 const Settings = () => {
   return (
@@ -25,17 +25,11 @@ const Settings = () => {
             label="Эл. почта"
             size="small"
           />
-          <TextField
-            fullWidth
-            required
-            id="outlined-required"
-            label="Пароль"
-            size="small"
-          />
+          <TextField fullWidth required id="outlined-required" label="Пароль" size="small" />
         </form>
         <Divider className="mt-30 mb-20" />
-        <Button className="fw-bold" variant='contained' color="primary">
-            Сохранить изменения
+        <Button className="fw-bold" variant="contained" color="primary">
+          Сохранить изменения
         </Button>
       </Paper>
     </MainLayout>

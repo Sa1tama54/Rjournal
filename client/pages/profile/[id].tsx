@@ -1,12 +1,9 @@
-import { Avatar, Button, Paper, Tab, Tabs, Typography } from "@mui/material";
-import React from "react";
-import MainLayout from "../../layouts/MainLayout";
-import {
-  Settings as SettingsIcon,
-  SmsOutlined as SmsOutlinedIcon,
-} from "@mui/icons-material";
-import Post from "../../components/Post";
-import Link from "next/link";
+import { Avatar, Button, Paper, Tab, Tabs, Typography } from '@mui/material';
+import React from 'react';
+import MainLayout from '../../layouts/MainLayout';
+import { Settings as SettingsIcon, SmsOutlined as SmsOutlinedIcon } from '@mui/icons-material';
+import Post from '../../components/Post';
+import Link from 'next/link';
 
 const Profile = () => {
   return (
@@ -43,11 +40,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="d-flex mt-10 mb-10">
-          <Typography
-            fontWeight="bold"
-            color="rgb(53, 171, 102)"
-            className="mr-15"
-          >
+          <Typography fontWeight="bold" color="rgb(53, 171, 102)" className="mr-15">
             +208
           </Typography>
           <Typography>2 подписчика</Typography>

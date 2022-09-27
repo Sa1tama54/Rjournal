@@ -1,4 +1,4 @@
-import { ArrowBack } from "@mui/icons-material";
+import { ArrowBack } from '@mui/icons-material';
 import {
   Button,
   Dialog,
@@ -7,39 +7,37 @@ import {
   DialogContentText,
   DialogTitle,
   Typography,
-} from "@mui/material";
-import React from "react";
-import styles from "./AuthDialog.module.scss";
-import LoginType from "./formType/LoginType";
-import MainType from "./formType/MainType";
-import RegisterType from "./formType/RegisterType";
+} from '@mui/material';
+import React from 'react';
+import styles from './AuthDialog.module.scss';
+import LoginType from './formType/LoginType';
+import MainType from './formType/MainType';
+import RegisterType from './formType/RegisterType';
 
 interface AuthDialogProps {
   handleClose: () => void;
 }
 
 const AuthDialog: React.FC<AuthDialogProps> = ({ handleClose }) => {
-  const [formType, setFormType] = React.useState<"main" | "login" | "register">(
-    "main"
-  );
+  const [formType, setFormType] = React.useState<'main' | 'login' | 'register'>('main');
 
-  const onOpenLogin = () => setFormType("login");
-  const onOpenRegister = () => setFormType("register");
+  const onOpenLogin = () => setFormType('login');
+  const onOpenRegister = () => setFormType('register');
 
   const formTypeText =
-    formType === "main" ? (
-      "Вход на TJ"
+    formType === 'main' ? (
+      'Вход на TJ'
     ) : (
       <>
         <ArrowBack
           className="mr-5"
           sx={{
-            cursor: "pointer",
-            "&:hover": {
-              color: "#4683d9",
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#4683d9',
             },
           }}
-          onClick={() => setFormType("main")}
+          onClick={() => setFormType('main')}
         />
         К авторизации
       </>
@@ -55,8 +53,8 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ handleClose }) => {
         fullWidth
       >
         <DialogContent>
-          <div className={styles.content}>
-            <DialogContentText>
+          <DialogContentText>
+            <div className={styles.content}>
               <Typography
                 fontSize={16}
                 fontWeight="bold"
@@ -65,15 +63,11 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ handleClose }) => {
               >
                 {formTypeText}
               </Typography>
-              {formType === "main" && <MainType onOpenLogin={onOpenLogin} />}
-              {formType === "login" && (
-                <LoginType onOpenRegister={onOpenRegister} />
-              )}
-              {formType === "register" && (
-                <RegisterType onOpenLogin={onOpenLogin} />
-              )}
-            </DialogContentText>
-          </div>
+              {formType === 'main' && <MainType onOpenLogin={onOpenLogin} />}
+              {formType === 'login' && <LoginType onOpenRegister={onOpenRegister} />}
+              {formType === 'register' && <RegisterType onOpenLogin={onOpenLogin} />}
+            </div>
+          </DialogContentText>
         </DialogContent>
       </Dialog>
     </>

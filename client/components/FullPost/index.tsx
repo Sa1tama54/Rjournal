@@ -1,12 +1,12 @@
-import { Avatar, Button, Paper, Typography } from "@mui/material";
-import React from "react";
-import PostActions from "../PostActions";
-import styles from "./FullPost.module.scss";
+import { Avatar, Button, Paper, Typography } from '@mui/material';
+import React from 'react';
+import PostActions from '../PostActions';
+import styles from './FullPost.module.scss';
 import {
   SmsOutlined as SmsOutlinedIcon,
   PersonAddAltOutlined as PersonAddAltOutlinedIcon,
-} from "@mui/icons-material";
-import CommentPost from "../CommentPost";
+} from '@mui/icons-material';
+import CommentPost from '../CommentPost';
 
 const FullPost = () => {
   return (
@@ -14,13 +14,12 @@ const FullPost = () => {
       <Paper className="pt-30 pb-30 mb-30" elevation={0}>
         <div className={styles.container}>
           <Typography className={styles.title} variant="h5">
-            Twitter начнёт тестировать функцию редактирования твитов «в
-            ближайшие месяцы»
+            Twitter начнёт тестировать функцию редактирования твитов «в ближайшие месяцы»
           </Typography>
           <Typography className={styles.text}>
-            Сначала она будет доступна пользователям платной подписки. Twitter
-            подтвердила, что работает над функцией редактирования твитов с 2021
-            года. Тестирование будет доступно подписчикам Twitter Blue.
+            Сначала она будет доступна пользователям платной подписки. Twitter подтвердила, что
+            работает над функцией редактирования твитов с 2021 года. Тестирование будет доступно
+            подписчикам Twitter Blue.
           </Typography>
 
           <div className={styles.actions}>
